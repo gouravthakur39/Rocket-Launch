@@ -1,9 +1,8 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment } from "react";
 import SignupButton from "./SignupButton";
 import LoginButton from "./LoginButton";
 
 function LoginSignupButton() {
-  
   return (
     <Fragment>
       <div className="block">
