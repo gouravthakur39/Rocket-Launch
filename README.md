@@ -1,4 +1,4 @@
-## steps to run this tailwind-react starter
+## steps to run this rocket app
 
 ### 1. clone this repo
 ### 2. npm install
