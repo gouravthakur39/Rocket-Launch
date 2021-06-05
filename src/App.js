@@ -6,6 +6,7 @@ import Login from "../src/components/LoginPage/Login";
 import Home from "./components/Home/Home";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
+import PrivateRoute from './components/PrivateRoute'
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Router>
         <AuthProvider>
           <Switch>
-          <Route exact path="/" component={Home} />
+          <PrivateRoute exact path="/" component={Home} />
 
           <Route exact path="/signup" component={SignUp} />
 
