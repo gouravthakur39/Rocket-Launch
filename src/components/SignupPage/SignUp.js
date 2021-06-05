@@ -1,5 +1,5 @@
 import React, { Fragment, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Header from "../Header/Header";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -10,6 +10,7 @@ function SignUp() {
   const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const history = useHistory()
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -20,6 +21,7 @@ function SignUp() {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
+      history.push('/')
     } catch {
       setError("Failed to create an account");
     }
