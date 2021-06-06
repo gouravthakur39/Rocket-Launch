@@ -65,11 +65,11 @@ function ForgotPassword() {
               </div>
             </form>
 
-            <div classNameName="text-center mt-12">
+            <div className="text-center mt-12">
               <span>Already have an account?</span>
               <a
                 href="#"
-                classNameName="font-light text-md text-indigo-600 underline font-semibold hover:text-indigo-800"
+                className="font-light text-md text-indigo-600 underline font-semibold hover:text-indigo-800"
               >
                 <Link to="/login">Log in</Link>
               </a>

@@ -1,17 +1,51 @@
-import React, { Fragment } from 'react'
+import { data } from "autoprefixer";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Header from "../Header/Header"
+import Header from "../Header/Header";
 
 function UpcomingLaunch() {
-    return (
-        <Fragment>
-            <Header/>
-            <div className="h-screen flex justify-center items-center">
-            <h1>Upcoming Launch</h1>
-            </div>
-            
-        </Fragment>
-    )
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const baseURL_UpcomingLaunch =
+    "https://fdo.rocketlaunch.live/json/launches/next/5";
+
+  useEffect(() => {
+    fetch(baseURL_UpcomingLaunch)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw response;
+      })
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
+        setError(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return "Loading...";
+  if (error) return "Error!";
+
+  return (
+    <Fragment>
+      <Header />
+      <div className="h-screen flex justify-center items-center">
+        <h4 className="mt-4">
+          {data.result.map((item) => (
+            <p>Hello, {item.provider.name} !</p>
+          ))}
+        </h4>
+      </div>
+    </Fragment>
+  );
 }
 
-export default UpcomingLaunch
+export default UpcomingLaunch;
