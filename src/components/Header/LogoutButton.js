@@ -28,7 +28,7 @@ function LogoutButton() {
         </button>
       </div>
       {error && (
-        <span class="flex justify-center font-large tracking-wide text-red-500 text-xs mt-1 ml-1">
+        <span className="flex justify-center font-large tracking-wide text-red-500 text-xs mt-1 ml-1">
           {error}
         </span>
       )}

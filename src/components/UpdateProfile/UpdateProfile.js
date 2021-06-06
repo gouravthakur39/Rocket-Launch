@@ -3,29 +3,41 @@ import { Link, useHistory } from "react-router-dom";
 import Header from "../Header/Header";
 import { useAuth } from "../../contexts/AuthContext";
 
-function SignUp() {
+function UpdateProfile() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup } = useAuth();
+  const { currentUser, updatePassword, updateEmail } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const history = useHistory()
+  const history = useHistory();
 
   async function handleSubmit(e) {
     e.preventDefault();
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match");
     }
-    try {
-      setError("");
-      setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
-      history.push('/')
-    } catch {
-      setError("Failed to create an account");
+    const promises = [];
+    setLoading(true);
+    setError("");
+
+    if (emailRef.current.value !== currentUser.email) {
+      promises.push(updateEmail(emailRef.current.value));
     }
-    setLoading(false);
+    if (passwordRef.current.value) {
+      promises.push(updatePassword(passwordRef.current.value));
+    }
+
+    Promise.all(promises)
+      .then(() => {
+        history.push("/");
+      })
+      .catch(() => {
+        setError("Failed to update account");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }
 
   return (
@@ -36,7 +48,7 @@ function SignUp() {
           <div className="rounded-lg sm:border-2 px-4 lg:px-24 py-16 lg:max-w-xl sm:max-w-md w-full text-center">
             <form onSubmit={handleSubmit} className="text-center">
               <h1 className="font-bold tracking-wider text-3xl mb-8 w-full text-gray-600">
-                Sign Up
+                Update profile
               </h1>
 
               <div className="py-2 text-left">
@@ -44,6 +56,7 @@ function SignUp() {
                   type="email"
                   className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                   placeholder="Email"
+                  required
                   ref={emailRef}
                 />
               </div>
@@ -74,22 +87,17 @@ function SignUp() {
                   disabled={loading}
                   className="border-2 border-gray-100 focus:outline-none bg-purple-600 text-white font-bold tracking-wider block w-full p-2 rounded-lg focus:border-gray-700 hover:bg-purple-700"
                 >
-                  Sign Up
+                  Update profile
                 </button>
               </div>
             </form>
-            <div className="text-center">
-              <a href="#" className="hover:underline">
-                <Link to="/reset">Forgot password?</Link>
-              </a>
-            </div>
-            <div className="text-center mt-12">
-              <span>Already have an account?</span>
+
+            <div className="text-center mt-5">
               <a
                 href="#"
-                className="font-light text-md text-indigo-600 underline font-semibold hover:text-indigo-800"
+                className="font-light text-md text-indigo-600 hover:underline font-semibold hover:text-indigo-800"
               >
-                <Link to="/login">Log in</Link>
+                <Link to="/">Cancel</Link>
               </a>
             </div>
           </div>
@@ -99,4 +107,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default UpdateProfile;

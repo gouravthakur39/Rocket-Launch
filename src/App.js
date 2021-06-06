@@ -10,6 +10,7 @@ import Dashboard from "./components/Dashboard/Dashboard"
 import PrivateRoute from './components/PrivateRoute'
 import UpcomingLaunch from "./components/UpcomingLaunch/UpcomingLaunch";
 import Rockets from "./components/Rockets/Rockets";
+import UpdateProfile from "./components/UpdateProfile/UpdateProfile";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           <Switch>
           
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
+
+          <PrivateRoute exact path="/update-profile" component={UpdateProfile} />
 
           <Route exact path="/" component={Home} />
 

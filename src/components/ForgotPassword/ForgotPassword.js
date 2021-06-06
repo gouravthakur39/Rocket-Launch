@@ -27,49 +27,49 @@ function ForgotPassword() {
 
   return (
     <Fragment>
-      <section class="min-h-screen flex flex-col">
-        <div class="flex flex-1 items-center justify-center">
-          <div class="rounded-lg sm:border-2 px-4 lg:px-24 py-16 lg:max-w-xl sm:max-w-md w-full text-center">
-        
-            <form onSubmit={handleSubmit} class="text-center">
-              <h1 class="font-bold tracking-wider text-3xl mb-8 w-full text-gray-600">
+      <section className="min-h-screen flex flex-col">
+        <div className="flex flex-1 items-center justify-center">
+          <div className="rounded-lg sm:border-2 px-4 lg:px-24 py-16 lg:max-w-xl sm:max-w-md w-full text-center">
+            <form onSubmit={handleSubmit} className="text-center">
+              <h1 className="font-bold tracking-wider text-3xl mb-8 w-full text-gray-600">
                 Forgot your password?
               </h1>
-              <div class="py-2 text-left">
+              <div className="py-2 text-left">
                 <input
                   type="email"
                   ref={emailRef}
                   required
-                  class="bg-gray-200 border-2 border-gray-100 focus:outline-none block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
+                  className="bg-gray-200 border-2 border-gray-100 focus:outline-none block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                   placeholder="Email"
                 />
               </div>
-              {error && 
-                <span class="flex justify-center font-large tracking-wide text-red-500 text-xs mt-1 ml-1">
+              {error && (
+                <span className="flex justify-center font-large tracking-wide text-red-500 text-xs mt-1 ml-1">
                   {error}
                 </span>
-              }
-                {message && 
-                <span class="flex justify-center font-large tracking-wide text-green-500 text-xs mt-1 ml-1">
+              )}
+
+              {message && (
+                <span className="flex justify-center font-large tracking-wide text-green-500 text-xs mt-1 ml-1">
                   {message}
                 </span>
-              }
-              <div class="py-2">
+              )}
+              <div className="py-2">
                 <button
                   type="submit"
-                  disabled={loading} 
-                  class="border-2 border-gray-100 focus:outline-none bg-purple-600 text-white font-bold tracking-wider block w-full p-2 rounded-lg focus:border-gray-700 hover:bg-purple-700"
+                  disabled={loading}
+                  className="border-2 border-gray-100 focus:outline-none bg-purple-600 text-white font-bold tracking-wider block w-full p-2 rounded-lg focus:border-gray-700 hover:bg-purple-700"
                 >
                   Reset password
                 </button>
               </div>
             </form>
-           
-            <div className="text-center mt-12">
+
+            <div classNameName="text-center mt-12">
               <span>Already have an account?</span>
               <a
                 href="#"
-                className="font-light text-md text-indigo-600 underline font-semibold hover:text-indigo-800"
+                classNameName="font-light text-md text-indigo-600 underline font-semibold hover:text-indigo-800"
               >
                 <Link to="/login">Log in</Link>
               </a>
