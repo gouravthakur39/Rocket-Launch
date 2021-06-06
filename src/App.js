@@ -6,7 +6,10 @@ import Login from "../src/components/LoginPage/Login";
 import Home from "./components/Home/Home";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
+import Dashboard from "./components/Dashboard/Dashboard"
 import PrivateRoute from './components/PrivateRoute'
+import UpcomingLaunch from "./components/UpcomingLaunch/UpcomingLaunch";
+import Rockets from "./components/Rockets/Rockets";
 
 function App() {
   return (
@@ -14,7 +17,14 @@ function App() {
       <Router>
         <AuthProvider>
           <Switch>
-          <PrivateRoute exact path="/" component={Home} />
+          
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+
+          <Route exact path="/" component={Home} />
+
+          <Route exact path="/upcoming-launch" component={UpcomingLaunch} />
+
+          <Route exact path="/rockets" component={Rockets} />
 
           <Route exact path="/signup" component={SignUp} />
 
@@ -23,6 +33,8 @@ function App() {
           <Route exact path="/reset" component={ForgotPassword} />
 
           <Route  path="/" component={ErrorPage} />
+
+         
 
           </Switch>
         </AuthProvider>

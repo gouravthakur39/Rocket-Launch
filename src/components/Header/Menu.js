@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import { Link } from "react-router-dom";
 
 function Menu() {
     return (
@@ -15,19 +16,19 @@ function Menu() {
                       className="text-gray-300 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                       href="/#"
                     >
-                      Upcoming launch
+                       <Link to="/upcoming-launch">Upcoming launch</Link>
                     </a>
                     <a
                       className="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                       href="/#"
                     >
-                      Rockets
+                      <Link to="/rockets">Rockets</Link>
                     </a>
                     <a
                       className="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                      href="/#"
+                      href="#"
                     >
-                      Contact
+                      <Link to="/dashboard">Dashboard</Link>
                     </a>
                   </div>
                 </div>

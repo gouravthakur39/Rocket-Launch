@@ -1,11 +1,13 @@
 import React, { Fragment } from "react";
 import LoginSignupButton from "./LoginSignupButton";
-import Menu from './Menu'
+import Menu from "./Menu";
+import SignupButton from "./SignupButton";
+import { useAuth } from "../../contexts/AuthContext";
 
-const LOGO_SRC = "https://img.icons8.com/cute-clipart/64/000000/rocket.png"
+const LOGO_SRC = "https://img.icons8.com/cute-clipart/64/000000/rocket.png";
 
 function Header() {
-  
+  const { currentUser } = useAuth();
   return (
     <Fragment>
       <div>
@@ -14,15 +16,12 @@ function Header() {
             <div className="flex items-center justify-between h-16">
               <div className=" flex items-center">
                 <a className="flex-shrink-0" href="/">
-                  <img
-                    className="h-8 w-8"
-                    src= {LOGO_SRC}
-                    alt="logo"
-                  />
+                  <img className="h-8 w-8" src={LOGO_SRC} alt="logo" />
                 </a>
-               <Menu />
+                <Menu />
               </div>
-              <LoginSignupButton />
+              {currentUser && <LoginSignupButton />}
+              {!currentUser && <SignupButton />}
             </div>
           </div>
         </nav>
