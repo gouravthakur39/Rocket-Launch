@@ -15,7 +15,7 @@ function Header() {
           <div className="max-w-7xl mx-auto px-8">
             <div className="flex items-center justify-between h-16">
               <div className=" flex items-center">
-                <a className="flex-shrink-0" href="/">
+                <a className="flex justify-center items-center " href="/">
                   <img className="h-8 w-8" src={LOGO_SRC} alt="logo" />
                 </a>
                 <Menu />

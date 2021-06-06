@@ -2,6 +2,7 @@ import { data } from "autoprefixer";
 import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
+import UpcomingLaunchCard from "./UpcomingLaunchCard";
 
 function UpcomingLaunch() {
   const [data, setData] = useState(null);
@@ -37,12 +38,17 @@ function UpcomingLaunch() {
   return (
     <Fragment>
       <Header />
-      <div className="h-screen flex justify-center items-center">
-        <h4 className="mt-4">
+      <div className="h-screen max-w-4xl flex-col justify-center items-center mx-auto">
+    <UpcomingLaunchCard/>
+    <UpcomingLaunchCard/>
+    <UpcomingLaunchCard/>
+    <UpcomingLaunchCard/>
+    <UpcomingLaunchCard/>
+        {/* <h4 className="mt-4">
           {data.result.map((item) => (
             <p>Hello, {item.provider.name} !</p>
           ))}
-        </h4>
+        </h4> */}
       </div>
     </Fragment>
   );
