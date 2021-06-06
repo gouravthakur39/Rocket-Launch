@@ -1,13 +1,12 @@
-import React, { Fragment, useState } from "react";
-import SignupButton from "./SignupButton";
+import React, { Fragment } from "react";
+
 import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 import { useAuth } from "../../contexts/AuthContext";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function LoginSignupButton() {
-  const [error, setError] = useState("");
-  const history = useHistory();
+ 
   const { currentUser } = useAuth();
 
   return (

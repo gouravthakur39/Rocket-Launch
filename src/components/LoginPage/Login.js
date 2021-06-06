@@ -39,7 +39,7 @@ function Login() {
               <div className="py-2 text-left">
                 <input
                   type="email"
-                  className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
+                  className="bg-gray-200 border-2 border-gray-100 focus:outline-none block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                   placeholder="Email"
                   ref={emailRef}
                 />
@@ -47,7 +47,7 @@ function Login() {
               <div classNameName="py-2 text-left">
                 <input
                   type="password"
-                  className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
+                  className="bg-gray-200 border-2 border-gray-100 focus:outline-none block w-full py-2 px-4 rounded-lg focus:border-gray-700 "
                   placeholder="Password"
                   ref={passwordRef}
                 />
@@ -77,7 +77,7 @@ function Login() {
               <span>Don't have an account?</span>
               <a
                 href="#"
-                className="font-light text-md text-indigo-600 underline font-semibold hover:text-indigo-800"
+                className="font-light text-md text-indigo-600 underline hover:text-indigo-800"
               >
                 <Link to="/signup">Sign up</Link>
               </a>

@@ -1,9 +1,9 @@
 import React, { Fragment, useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function LogoutButton() {
-  const { currentUser, logout } = useAuth();
+  const { logout } = useAuth();
   const [error, setError] = useState("");
   const history = useHistory();
   async function handleLogout() {
