@@ -1,8 +1,9 @@
-import { data } from "autoprefixer";
+// import { data } from "autoprefixer";
 import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import UpcomingLaunchCard from "./UpcomingLaunchCard";
+
 
 function UpcomingLaunch() {
   const [data, setData] = useState(null);
@@ -32,21 +33,38 @@ function UpcomingLaunch() {
       });
   }, []);
 
-
   if (loading) return "Loading...";
   if (error) return "Error!";
 
+ 
+
   const launchList = data.result.map((item) => (
-    <UpcomingLaunchCard key={item.id} upcomingLaunchTitle={JSON.stringify(item.provider.name)} />
+    <UpcomingLaunchCard
+      key={item.id}
+      upcomingLaunchTitle={JSON.parse(JSON.stringify(item.vehicle.name))}
+      upcomingLaunchdescription={JSON.parse(
+        JSON.stringify(item.launch_description)
+      )}
+      upcomingLaunchProvider={JSON.parse(JSON.stringify(item.provider.name))}
+      upcomingLaunchDate={JSON.parse(JSON.stringify(item.date_str))}
+      upcomingLaunchPad={JSON.parse(JSON.stringify(item.pad.name))}
+      upcomingLaunchLocation={JSON.parse(
+        JSON.stringify(item.pad.location.name)
+      )}
+      upcomingLaunchTime={JSON.parse(JSON.stringify((item.win_open)))}
+      upcomingLaunchCountry={JSON.parse(
+        JSON.stringify(item.pad.location.country)
+      )}
+      upcomingLaunchMission={JSON.parse(JSON.stringify(item.name))}
+      upcomingLaunchTags={JSON.parse(JSON.stringify(item.slug))}
+    />
   ));
 
   return (
-    
-
     <Fragment>
       <Header />
       <div className="h-screen max-w-4xl flex-col justify-center items-center mx-auto">
-   {launchList}
+        {launchList}
         {/* <h4 className="mt-4">
           {data.result.map((item) => (
             <p>Hello, {item.provider.name} !</p>

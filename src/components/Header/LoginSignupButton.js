@@ -14,12 +14,12 @@ function LoginSignupButton() {
       <div className="block">
         <div className="ml-4 flex items-center md:ml-6">
           {/* when logged out this is giving error. fix it */}
-          <h4 className="text-s text-gray-500">{currentUser.email}</h4>
+          <h4 className="text-base text-gray-500">{currentUser.email}</h4>
           {currentUser && <LogoutButton />}
           {!currentUser && <LoginButton />}
           {currentUser && (
             <a
-              className="text-gray-800  hover:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              className="text-gray-800  hover:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-base font-medium"
               href="/#"
             >
                <Link to="/update-profile">Update profile</Link>
