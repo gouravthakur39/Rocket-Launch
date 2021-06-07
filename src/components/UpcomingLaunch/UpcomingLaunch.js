@@ -32,18 +32,21 @@ function UpcomingLaunch() {
       });
   }, []);
 
+
   if (loading) return "Loading...";
   if (error) return "Error!";
 
+  const launchList = data.result.map((item) => (
+    <UpcomingLaunchCard key={item.id} upcomingLaunchTitle={JSON.stringify(item.provider.name)} />
+  ));
+
   return (
+    
+
     <Fragment>
       <Header />
       <div className="h-screen max-w-4xl flex-col justify-center items-center mx-auto">
-    <UpcomingLaunchCard/>
-    <UpcomingLaunchCard/>
-    <UpcomingLaunchCard/>
-    <UpcomingLaunchCard/>
-    <UpcomingLaunchCard/>
+   {launchList}
         {/* <h4 className="mt-4">
           {data.result.map((item) => (
             <p>Hello, {item.provider.name} !</p>

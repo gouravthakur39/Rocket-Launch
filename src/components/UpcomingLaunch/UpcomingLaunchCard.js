@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 
-function UpcomingLaunchCard() {
+
+function UpcomingLaunchCard(props) {
   return (
     <Fragment>
       <div className="p-5">
@@ -11,7 +12,7 @@ function UpcomingLaunchCard() {
               backgroundImage:
                 "url('https://cdn.mos.cms.futurecdn.net/Ycumh9efJ6sFekSpvQ9j5j-1024-80.jpg.webp')",
             }}
-            title="Mountain"
+            
           ></div>
           <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
             <div className="mb-8">
@@ -26,7 +27,7 @@ function UpcomingLaunchCard() {
                 Members only
               </p> */}
               <div className="text-gray-900 font-bold text-xl mb-2">
-                SpaceX falcon 19 
+                {props.upcomingLaunchTitle}
               </div>
               <p className="text-gray-700 text-base">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -38,7 +39,7 @@ function UpcomingLaunchCard() {
               <img
                 className="w-10 h-10 rounded-full mr-4"
                 src="https://upload.wikimedia.org/wikipedia/commons/3/36/SpaceX-Logo-Xonly.svg"
-                alt="Avatar of Writer"
+                
               />
               <div className="text-sm">
                 <p className="text-gray-900 leading-none">John Smith</p>
