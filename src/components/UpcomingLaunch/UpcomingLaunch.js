@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import UpcomingLaunchCard from "./UpcomingLaunchCard";
 
-
 function UpcomingLaunch() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -12,6 +11,9 @@ function UpcomingLaunch() {
 
   const baseURL_UpcomingLaunch =
     "https://fdo.rocketlaunch.live/json/launches/next/5";
+
+  // const baseURL_UpcomingLaunch =
+  //   "https://spacelaunchnow.me/api/ll/2.2.0/launch/upcoming/?format=json&limit=10";
 
   useEffect(() => {
     fetch(baseURL_UpcomingLaunch)
@@ -36,8 +38,6 @@ function UpcomingLaunch() {
   if (loading) return "Loading...";
   if (error) return "Error!";
 
- 
-
   const launchList = data.result.map((item) => (
     <UpcomingLaunchCard
       key={item.id}
@@ -51,7 +51,7 @@ function UpcomingLaunch() {
       upcomingLaunchLocation={JSON.parse(
         JSON.stringify(item.pad.location.name)
       )}
-      upcomingLaunchTime={JSON.parse(JSON.stringify((item.win_open)))}
+      upcomingLaunchTime={JSON.parse(JSON.stringify(item.win_open))}
       upcomingLaunchCountry={JSON.parse(
         JSON.stringify(item.pad.location.country)
       )}
@@ -63,13 +63,12 @@ function UpcomingLaunch() {
   return (
     <Fragment>
       <Header />
+
       <div className="h-screen max-w-4xl flex-col justify-center items-center mx-auto">
+        <h1 className="font-semibold flex justify-center mt-10 mb-2 text-3xl">
+          Upcoming Launches
+        </h1>
         {launchList}
-        {/* <h4 className="mt-4">
-          {data.result.map((item) => (
-            <p>Hello, {item.provider.name} !</p>
-          ))}
-        </h4> */}
       </div>
     </Fragment>
   );
