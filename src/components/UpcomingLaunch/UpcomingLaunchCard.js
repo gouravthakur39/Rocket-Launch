@@ -6,10 +6,11 @@ function UpcomingLaunchCard(props) {
       <div className="p-5 ">
         <div className=" w-full lg:max-w-full lg:flex ">
           <div
-            className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center bg-center overflow-hidden "
+            className="h-48  lg:h-auto lg:w-64 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center bg-center overflow-hidden "
             style={{
               backgroundImage:
                 "url('https://cdn.mos.cms.futurecdn.net/Ycumh9efJ6sFekSpvQ9j5j-1024-80.jpg.webp')",
+              
             }}
           ></div>
           <div className="hover:bg-gray-100  shadow border-r border-b border-l border-gray-300 lg:border-l-0 lg:border-t lg:border-gray-300 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">

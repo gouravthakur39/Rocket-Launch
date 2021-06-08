@@ -13,7 +13,7 @@ function UpcomingLaunch() {
     "https://fdo.rocketlaunch.live/json/launches/next/5";
 
   // const baseURL_UpcomingLaunch =
-  //   "https://spacelaunchnow.me/api/ll/2.2.0/launch/upcoming/?format=json&limit=10";
+  //   "https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?is_crewed=false&include_suborbital=true&related=false&hide_recent_previous=false";
 
   useEffect(() => {
     fetch(baseURL_UpcomingLaunch)
@@ -35,7 +35,18 @@ function UpcomingLaunch() {
       });
   }, []);
 
-  if (loading) return "Loading...";
+  if (loading)
+    return (
+      <h1 className="h-full  flex justify-center items-center text-s m-2">
+        🚀 Loading...
+      </h1>
+    );
+  if (error)
+    return (
+      <h1 className="h-full  flex justify-center items-center  text-s m-2">
+        😓 Error!
+      </h1>
+    );
   if (error) return "Error!";
 
   const launchList = data.result.map((item) => (
@@ -55,8 +66,11 @@ function UpcomingLaunch() {
       upcomingLaunchCountry={JSON.parse(
         JSON.stringify(item.pad.location.country)
       )}
-      upcomingLaunchMission={JSON.parse(JSON.stringify(item.name))}
-      upcomingLaunchTags={JSON.parse(JSON.stringify(item.slug))}
+      upcomingLaunchMission={JSON.parse(JSON.stringify(item.missions[0].name))}
+      upcomingLaunchTags={JSON.parse(
+        // JSON.stringify(item.tags.length !== 0 ? item.tags[0].text : "")
+        JSON.stringify(item.tags.length !== 0 ? item.tags[0].text : "")
+      )}
     />
   ));
 
