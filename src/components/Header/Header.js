@@ -3,6 +3,7 @@ import LoginSignupButton from "./LoginSignupButton";
 import Menu from "./Menu";
 import SignupButton from "./SignupButton";
 import { useAuth } from "../../contexts/AuthContext";
+import LoginButton from "./LoginButton"
 
 const LOGO_SRC = "https://img.icons8.com/cute-clipart/64/000000/rocket.png";
 
@@ -21,7 +22,9 @@ function Header() {
                 <Menu />
               </div>
               {currentUser && <LoginSignupButton />}
+              {!currentUser && <LoginButton />}
               {!currentUser && <SignupButton />}
+              
             </div>
           </div>
         </nav>

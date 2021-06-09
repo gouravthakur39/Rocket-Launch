@@ -1,5 +1,6 @@
 // import { data } from "autoprefixer";
 import React, { Fragment, useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import UpcomingLaunchCard from "./UpcomingLaunchCard";
@@ -8,12 +9,15 @@ function UpcomingLaunch() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentURL, setCurrentURL] = useState("http://localhost:3000/results")
+  const [nextURL, setNextURL] = useState('')
+  const [prevURL, setPrevURL] = useState('')
 
-  const baseURL_UpcomingLaunch =
-    "https://fdo.rocketlaunch.live/json/launches/next/5";
 
   // const baseURL_UpcomingLaunch =
-  //   "https://lldev.thespacedevs.com/2.2.0/launch/upcoming/?is_crewed=false&include_suborbital=true&related=false&hide_recent_previous=false";
+  //   "https://fdo.rocketlaunch.live/json/launches/next/5";
+
+  const baseURL_UpcomingLaunch = "http://localhost:3000/results";
 
   useEffect(() => {
     fetch(baseURL_UpcomingLaunch)
@@ -26,6 +30,7 @@ function UpcomingLaunch() {
       .then((data) => {
         setData(data);
       })
+
       .catch((error) => {
         console.error("Error fetching data: ", error);
         setError(error);
@@ -35,42 +40,57 @@ function UpcomingLaunch() {
       });
   }, []);
 
+  // if (loading) return "Loading...";
+  // if (error) return "Error!";
+
   if (loading)
     return (
-      <h1 className="h-full  flex justify-center items-center text-s m-2">
+      <h1 className="h-screen flex justify-center items-center text-xl m-2">
         🚀 Loading...
       </h1>
     );
   if (error)
     return (
-      <h1 className="h-full  flex justify-center items-center  text-s m-2">
+      <h1 className="h-screen flex justify-center items-center  text-xl m-2">
         😓 Error!
       </h1>
     );
-  if (error) return "Error!";
 
-  const launchList = data.result.map((item) => (
+  //     upcomingLaunchTags={JSON.parse(
+  //       JSON.stringify(item.tags.length !== 0 ? item.tags[0].text : "")
+  //     )}
+
+  const launchList = data.map((item) => (
     <UpcomingLaunchCard
       key={item.id}
-      upcomingLaunchTitle={JSON.parse(JSON.stringify(item.vehicle.name))}
+      upcomingLaunchTitle={JSON.parse(JSON.stringify(item.name))}
       upcomingLaunchdescription={JSON.parse(
-        JSON.stringify(item.launch_description)
+        JSON.stringify(
+          item.mission !== null
+            ? item.mission.description.substring(0, 200)
+            : "To be updated"
+        )
       )}
-      upcomingLaunchProvider={JSON.parse(JSON.stringify(item.provider.name))}
-      upcomingLaunchDate={JSON.parse(JSON.stringify(item.date_str))}
+      upcomingLaunchProvider={JSON.parse(
+        JSON.stringify(item.launch_service_provider.name)
+      )}
+      upcomingLaunchDate={JSON.parse(JSON.stringify(item.window_start))}
       upcomingLaunchPad={JSON.parse(JSON.stringify(item.pad.name))}
       upcomingLaunchLocation={JSON.parse(
         JSON.stringify(item.pad.location.name)
       )}
-      upcomingLaunchTime={JSON.parse(JSON.stringify(item.win_open))}
       upcomingLaunchCountry={JSON.parse(
-        JSON.stringify(item.pad.location.country)
+        JSON.stringify(
+          item.pad.location.country_code !== null
+            ? item.pad.location.country_code
+            : "To be updated"
+        )
       )}
-      upcomingLaunchMission={JSON.parse(JSON.stringify(item.missions[0].name))}
+      upcomingLaunchMission={JSON.parse(JSON.stringify(item.status.abbrev))}
       upcomingLaunchTags={JSON.parse(
-        // JSON.stringify(item.tags.length !== 0 ? item.tags[0].text : "")
-        JSON.stringify(item.tags.length !== 0 ? item.tags[0].text : "")
+        JSON.stringify(item.rocket.configuration.name)
       )}
+      upcomingLaunchImage={JSON.parse(JSON.stringify(item.image))}
     />
   ));
 
