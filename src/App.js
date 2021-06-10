@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import useDarkMode from './Hooks/useDarkMode'
 import { AuthProvider } from "./contexts/AuthContext";
 import SignUp from "../src/components/SignupPage/SignUp";
 import Login from "../src/components/LoginPage/Login";
@@ -12,9 +11,10 @@ import PrivateRoute from './components/PrivateRoute'
 import UpcomingLaunch from "./components/UpcomingLaunch/UpcomingLaunch";
 import Rockets from "./components/Rockets/Rockets";
 import UpdateProfile from "./components/UpdateProfile/UpdateProfile";
+import News from "./components/News/News";
 
 function App() {
-  useDarkMode()
+  
   return (
     <Fragment>
       <Router>
@@ -28,6 +28,8 @@ function App() {
           <Route exact path="/" component={Home} />
 
           <Route exact path="/upcoming-launch" component={UpcomingLaunch} />
+
+          <Route exact path="/news" component={News} />
 
           <Route exact path="/rockets" component={Rockets} />
 

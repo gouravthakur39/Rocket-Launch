@@ -19,6 +19,12 @@ function Menu() {
                        <Link  to="/upcoming-launch" >Upcoming launch</Link>
                     </a>
                     <a
+                      className="text-gray-400 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-base font-medium"
+                      href="/#"
+                    >
+                       <Link  to="/news" >News</Link>
+                    </a>
+                    <a
                       className="text-gray-400  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-base font-medium"
                       href="/#"
                     >
