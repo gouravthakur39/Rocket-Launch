@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import useDarkMode from './Hooks/useDarkMode'
 import { AuthProvider } from "./contexts/AuthContext";
 import SignUp from "../src/components/SignupPage/SignUp";
 import Login from "../src/components/LoginPage/Login";
@@ -13,6 +14,7 @@ import Rockets from "./components/Rockets/Rockets";
 import UpdateProfile from "./components/UpdateProfile/UpdateProfile";
 
 function App() {
+  useDarkMode()
   return (
     <Fragment>
       <Router>

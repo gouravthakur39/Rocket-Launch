@@ -4,6 +4,7 @@ import Menu from "./Menu";
 import SignupButton from "./SignupButton";
 import { useAuth } from "../../contexts/AuthContext";
 import LoginButton from "./LoginButton"
+import DarkModeToggler from "../DarkModeToggler/DarkModeToggler";
 
 const LOGO_SRC = "https://img.icons8.com/cute-clipart/64/000000/rocket.png";
 
@@ -24,6 +25,7 @@ function Header() {
               {currentUser && <LoginSignupButton />}
               {!currentUser && <LoginButton />}
               {!currentUser && <SignupButton />}
+              <DarkModeToggler/>
               
             </div>
           </div>

@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
+import useDarkMode from '../../Hooks/useDarkMode'
 
 function UpcomingLaunchCard(props) {
+  useDarkMode()
   return (
     <Fragment>
       <div className="p-5 ">
@@ -15,7 +17,7 @@ function UpcomingLaunchCard(props) {
 
           <div className="w-screen hover:bg-gray-100  shadow border-r border-b border-l border-gray-300 lg:border-l-0 lg:border-t lg:border-gray-300 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
             <div className="mb-8">
-              <div className="text-gray-900 font-bold text-xl mb-2">
+              <div className="text-gray-900 dark:text-red-900 font-bold text-xl mb-2">
                 {props.upcomingLaunchTitle}
               </div>
               <p className="text-gray-700 text-base leading-relaxed ">
@@ -26,9 +28,9 @@ function UpcomingLaunchCard(props) {
 
             <div className="flex items-center -my-2">
               <img
-                class="w-10 h-10 object-cover rounded-full mr-4 "
-                alt="User avatar"
-                src="https://i.pravatar.cc/200?u=007"
+                class="w-20 h-20 object-contain  mr-4 "
+                alt="company logo"
+                src={props.companyLogo}
               ></img>
               <div className="text-sm">
                 <p className="text-gray-900 leading-relaxed">
