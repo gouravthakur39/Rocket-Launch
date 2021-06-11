@@ -32,7 +32,7 @@ function News() {
         throw response;
       })
       .then((data) => {
-        setData(data);
+        setData(data.slice(0,20));
       })
 
       .catch((error) => {

@@ -4,6 +4,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import UpcomingLaunchCard from "./UpcomingLaunchCard";
+import ReactPaginate from "react-paginate";
 
 const memo = (callback) => {
   const cache = new Map();
@@ -22,6 +23,11 @@ function UpcomingLaunch() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [pageNumber, setPageNumber] = useState(0);
+
+  const itemsPerPage = 3;
+  const pagesVisited = pageNumber * itemsPerPage;
 
   // const baseURL_UpcomingLaunch =
   //   "https://fdo.rocketlaunch.live/json/launches/next/5";
@@ -49,8 +55,7 @@ function UpcomingLaunch() {
       });
   }, [baseURL_UpcomingLaunch]);
 
-  // if (loading) return "Loading...";
-  // if (error) return "Error!";
+  
 
   if (loading)
     return (
@@ -72,11 +77,9 @@ function UpcomingLaunch() {
       </div>
     );
 
-  //     upcomingLaunchTags={JSON.parse(
-  //       JSON.stringify(item.tags.length !== 0 ? item.tags[0].text : "")
-  //     )}
+  
 
-  const launchList = data.map((item) => (
+  const launchList = data.slice(pagesVisited, pagesVisited + itemsPerPage).map((item) => (
     <UpcomingLaunchCard
       key={item.id}
       upcomingLaunchTitle={JSON.parse(JSON.stringify(item.name))}
@@ -115,6 +118,12 @@ function UpcomingLaunch() {
     />
   ));
 
+  const pageCount = Math.ceil(data.length / itemsPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
   return (
     <Fragment>
       <Header />
@@ -124,7 +133,19 @@ function UpcomingLaunch() {
         </h1>
 
         {launchList}
-        <ul class="flex float-right m-4 ">
+        <ReactPaginate
+        previousLabel={"Prev"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={"flex float-right m-4 px-2 text-xl"}
+        previousLinkClassName={"text-indigo-100 font-bold rounded px-3 py-2 bg-indigo-700 hover:bg-indigo-500"}
+        nextLinkClassName={"text-indigo-100 font-bold rounded px-3 py-2 bg-indigo-700 hover:bg-indigo-500"}
+        pageClassName={"text-gray-700 px-3 hover:text-gray-500"}
+        // pageLinkClassName={"text-gray-700 px-1"}
+        activeClassName={"text-indigo-700"}
+      />
+        {/* <ul class="flex float-right m-4 ">
           <li class="mx-1 px-3 py-2 bg-gray-200 text-gray-500 hover:bg-gray-700 hover:text-gray-200 rounded-lg">
             <a class="flex items-center font-bold" href="#">
               <span class="mx-1">&lt; previous</span>
@@ -136,7 +157,7 @@ function UpcomingLaunch() {
               <span class="mx-1">Next &gt;</span>
             </a>
           </li>
-        </ul>
+        </ul> */}
       </div>
     </Fragment>
   );
