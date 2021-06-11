@@ -22,7 +22,7 @@ function Header() {
 
                   <svg
                     id="Capa_1"
-                    enable-background="new 0 0 512 512"
+                    enableBackground="new 0 0 512 512"
                     height="24"
                     viewBox="0 0 512 512"
                     width="24"
@@ -38,9 +38,9 @@ function Header() {
                       y1="441.317"
                       y2="-98.609"
                     >
-                      <stop offset="0" stop-color="#addcff" />
-                      <stop offset=".5028" stop-color="#eaf6ff" />
-                      <stop offset="1" stop-color="#eaf6ff" />
+                      <stop offset="0" stopColor="#addcff" />
+                      <stop offset=".5028" stopColor="#eaf6ff" />
+                      <stop offset="1" stopColor="#eaf6ff" />
                     </linearGradient>
                     <linearGradient
                       id="SVGID_2_"
@@ -51,8 +51,8 @@ function Header() {
                       y1="610.868"
                       y2="6.315"
                     >
-                      <stop offset="0" stop-color="#5558ff" />
-                      <stop offset="1" stop-color="#00c0ff" />
+                      <stop offset="0" stopColor="#5558ff" />
+                      <stop offset="1" stopColor="#00c0ff" />
                     </linearGradient>
                     <g>
                       <g>

@@ -32,7 +32,7 @@ function UpcomingLaunch() {
     memoizedFetchGet(baseURL_UpcomingLaunch)
       .then((response) => {
         if (response.ok) {
-          return response.json();
+          return response.clone().json();
         }
         throw response;
       })
