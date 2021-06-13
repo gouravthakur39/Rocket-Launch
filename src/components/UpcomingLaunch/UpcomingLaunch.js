@@ -82,7 +82,7 @@ function UpcomingLaunch() {
   const launchList = data.slice(pagesVisited, pagesVisited + itemsPerPage).map((item) => (
     <UpcomingLaunchCard
       key={item.id}
-      upcomingLaunchTitle={JSON.parse(JSON.stringify(item.name))}
+      upcomingLaunchTitle={JSON.parse(JSON.stringify(item.name.substring(0, 40)))}
       upcomingLaunchdescription={JSON.parse(
         JSON.stringify(
           item.mission !== null
@@ -142,22 +142,9 @@ function UpcomingLaunch() {
         previousLinkClassName={"text-indigo-100 font-bold rounded px-3 py-2 bg-indigo-700 hover:bg-indigo-500"}
         nextLinkClassName={"text-indigo-100 font-bold rounded px-3 py-2 bg-indigo-700 hover:bg-indigo-500"}
         pageClassName={"text-gray-700 px-3 hover:text-gray-500"}
-        // pageLinkClassName={"text-gray-700 px-1"}
         activeClassName={"text-indigo-700"}
       />
-        {/* <ul class="flex float-right m-4 ">
-          <li class="mx-1 px-3 py-2 bg-gray-200 text-gray-500 hover:bg-gray-700 hover:text-gray-200 rounded-lg">
-            <a class="flex items-center font-bold" href="#">
-              <span class="mx-1">&lt; previous</span>
-            </a>
-          </li>
-
-          <li class="mx-1 px-3 py-2 bg-gray-200 text-gray-500 hover:bg-gray-700 hover:text-gray-200 rounded-lg">
-            <a class="flex items-center font-bold" href="#">
-              <span class="mx-1">Next &gt;</span>
-            </a>
-          </li>
-        </ul> */}
+      
       </div>
     </Fragment>
   );

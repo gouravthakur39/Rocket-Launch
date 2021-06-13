@@ -1,4 +1,6 @@
 import React, { Fragment } from "react";
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 function NewsItem(props) {
   return (
@@ -35,7 +37,7 @@ function NewsItem(props) {
           </div>
           <div className="py-2 px-4">
             <h1 className="text-xl font-medium leading-6 tracking-wide text-gray-300 hover:text-blue-500 cursor-pointer">
-              <a href="blog/detail">
+              <a href={props.url} target="_blank" rel="noreferrer">
                {props.title}
               </a>
             </h1>
@@ -54,23 +56,23 @@ function NewsItem(props) {
           </div>
           <div className="flex flex-row items-end h-full w-full px-4 mt-4">
             <div className="flex border-t border-gray-700 w-full py-4">
-              <div className="flex items-center space-x-3 border-r border-gray-700 w-full">
-                <img
+              <div className="flex items-center space-x-3  border-gray-700 w-full">
+                {/* <img
                   className="object-cover w-8 h-8 border-2 border-white rounded-full"
                   src="https://storageapi.fleek.co/kamaludin21-team-bucket/portfolio/avatar.jpg"
                   alt="profile users"
                   loading="lazy"
-                />
+                /> */}
                 <div className="">
                   <p className="text-sm font-semibold tracking-wide text-gray-200">
-                    Author
+                  Published: <Moment format="DD-MMM-YYYY">{props.publishedAt}</Moment>
                   </p>
-                  <p className="text-xs font-light tracking-wider text-gray-300">
-                    2 Hours ago
+                  <p className="text-sm font-semibold tracking-wider text-gray-300">
+                  Updated: <Moment durationFromNow format="D">{props.updatedAt}</Moment> days ago
                   </p>
                 </div>
               </div>
-              <div className="flex items-center flex-shrink-0 px-2">
+              {/* <div className="flex items-center flex-shrink-0 px-2">
                 <div className="flex items-center space-x-1 text-gray-400">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +90,7 @@ function NewsItem(props) {
                   </svg>
                   <p className="font-medium">10</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -1,9 +1,12 @@
 import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
-import useDarkMode from '../../Hooks/useDarkMode'
+import useDarkMode from "../../Hooks/useDarkMode";
+
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 function UpcomingLaunchCard(props) {
-  useDarkMode()
+  useDarkMode();
   return (
     <Fragment>
       <div className="p-5 ">
@@ -15,10 +18,14 @@ function UpcomingLaunchCard(props) {
             }}
           ></div>
 
-          <div className="w-screen hover:bg-gray-100  shadow border-r border-b border-l border-gray-300 lg:border-l-0 lg:border-t lg:border-gray-300 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+          <div className="w-screen  hover:bg-gray-100  shadow border-r border-b border-l border-gray-300 lg:border-l-0 lg:border-t lg:border-gray-300 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
             <div className="mb-8">
-              <div className="text-gray-900 dark:text-red-900 font-bold text-xl mb-2">
+              <div className="flex flex-row justify-between text-gray-900 dark:text-red-900 font-bold text-xl mb-2">
                 {props.upcomingLaunchTitle}
+                <p className="flex-none bg-red-500 text-red-200 p-2 rounded-full text-xs">
+                
+                <Moment format="DD">{props.upcomingLaunchDate}</Moment> days from now
+                </p>
               </div>
               <p className="text-gray-700 text-base leading-relaxed ">
                 {props.upcomingLaunchdescription}

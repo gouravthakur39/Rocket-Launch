@@ -721,6 +721,7 @@
       "infographic": "https://spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com/media/launch_images/gslv2520mk252_infographic_20200805202604.png",
       "program": []
     },
+    
     {
       "id": "6d847530-c328-445b-9689-6969ae689d79",
       "url": "https://ll.thespacedevs.com/2.2.0/launch/6d847530-c328-445b-9689-6969ae689d79/",
@@ -2485,7 +2486,7 @@
       "newsSite": "SpaceNews",
       "summary": "Shenzhen will provide up to $47 million in support for development of satellite equipment, applications and other areas to drive space-related innovation in the southern Chinese city.",
       "publishedAt": "2021-06-09T12:53:49.000Z",
-      "updatedAt": "2021-06-09T12:53:49.341Z",
+      "updatedAt": "2021-06-13T09:31:22.806Z",
       "featured": false,
       "launches": [],
       "events": []
