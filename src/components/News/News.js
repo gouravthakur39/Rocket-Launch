@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import NewsItem from "./NewsItem";
+import ReactPaginate from "react-paginate";
 
 const memo = (callback) => {
   const cache = new Map();
@@ -21,6 +22,11 @@ function News() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const [pageNumber, setPageNumber] = useState(0);
+
+  const itemsPerPage = 9;
+  const pagesVisited = pageNumber * itemsPerPage;
+
   const baseURL_Articles = "http://localhost:3000/articles";
 
   useEffect(() => {
@@ -32,7 +38,7 @@ function News() {
         throw response;
       })
       .then((data) => {
-        setData(data.slice(0,20));
+        setData(data.slice(0, 20));
       })
 
       .catch((error) => {
@@ -67,38 +73,46 @@ function News() {
       </div>
     );
 
-  const articleList = data.map((item) => (
-    <NewsItem
-      key={item.id}
-      //   upcomingLaunchTitle={JSON.parse(JSON.stringify(item.name))}
-      //   upcomingLaunchdescription={JSON.parse(
-      //     JSON.stringify(
-      //       item.mission !== null
-      //         ? item.mission.description.substring(0, 200)
-      //         : "To be updated"
-      //     )
-      //   )}
-      title={JSON.parse(JSON.stringify(item.title))}
-      //   upcomingLaunchDate={JSON.parse(
-      //     JSON.stringify(Date(item.window_start).toString())
-      //   )}
-      //   upcomingLaunchPad={JSON.parse(JSON.stringify(item.pad.name))}
-      //   upcomingLaunchLocation={JSON.parse(
-      //     JSON.stringify(item.pad.location.name)
-      //   )}
-      //   upcomingLaunchCountry={JSON.parse(
-      //     JSON.stringify(
-      //       item.pad.location.country_code !== null
-      //         ? item.pad.location.country_code
-      //         : "To be updated"
-      //     )
-      //   )}
-      //   upcomingLaunchMission={JSON.parse(JSON.stringify(item.status.abbrev))}
-      summary={JSON.parse(JSON.stringify(item.summary.substring(0, 120)))}
-      image={JSON.parse(JSON.stringify(item.imageUrl))}
-      source={JSON.parse(JSON.stringify(item.newsSite))}
-    />
-  ));
+  const articleList = data
+    .slice(pagesVisited, pagesVisited + itemsPerPage)
+    .map((item) => (
+      <NewsItem
+        key={item.id}
+        //   upcomingLaunchTitle={JSON.parse(JSON.stringify(item.name))}
+        //   upcomingLaunchdescription={JSON.parse(
+        //     JSON.stringify(
+        //       item.mission !== null
+        //         ? item.mission.description.substring(0, 200)
+        //         : "To be updated"
+        //     )
+        //   )}
+        title={JSON.parse(JSON.stringify(item.title))}
+        //   upcomingLaunchDate={JSON.parse(
+        //     JSON.stringify(Date(item.window_start).toString())
+        //   )}
+        //   upcomingLaunchPad={JSON.parse(JSON.stringify(item.pad.name))}
+        //   upcomingLaunchLocation={JSON.parse(
+        //     JSON.stringify(item.pad.location.name)
+        //   )}
+        //   upcomingLaunchCountry={JSON.parse(
+        //     JSON.stringify(
+        //       item.pad.location.country_code !== null
+        //         ? item.pad.location.country_code
+        //         : "To be updated"
+        //     )
+        //   )}
+        //   upcomingLaunchMission={JSON.parse(JSON.stringify(item.status.abbrev))}
+        summary={JSON.parse(JSON.stringify(item.summary.substring(0, 120)))}
+        image={JSON.parse(JSON.stringify(item.imageUrl))}
+        source={JSON.parse(JSON.stringify(item.newsSite))}
+      />
+    ));
+
+  const pageCount = Math.ceil(data.length / itemsPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
 
   return (
     <Fragment>
@@ -106,21 +120,20 @@ function News() {
       <h1 className="font-semibold flex justify-center mt-10 mb-2 text-3xl">
         Space and Astronomy News
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-        {articleList}
-        <ul className="flex float-right m-4 ">
-          <li className="mx-1 px-3 py-2 bg-gray-200 text-gray-500 hover:bg-gray-700 hover:text-gray-200 rounded-lg">
-            <a className="flex items-center font-bold" href="#">
-              <span className="mx-1">&lt; previous</span>
-            </a>
-          </li>
-
-          <li className="mx-1 px-3 py-2 bg-gray-200 text-gray-500 hover:bg-gray-700 hover:text-gray-200 rounded-lg">
-            <a className="flex items-center font-bold" href="#">
-              <span className="mx-1">Next &gt;</span>
-            </a>
-          </li>
-        </ul>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">{articleList}</div>
+      <div className="flex float-right m-1">
+      <ReactPaginate
+        previousLabel={"Prev"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={"flex float-right m-4 px-2 text-xl"}
+        previousLinkClassName={"text-indigo-100 font-bold rounded px-3 py-2 bg-indigo-700 hover:bg-indigo-500"}
+        nextLinkClassName={"text-indigo-100 font-bold rounded px-3 py-2 bg-indigo-700 hover:bg-indigo-500"}
+        pageClassName={"text-gray-700 px-3 hover:text-gray-500"}
+        // pageLinkClassName={"text-gray-700 px-1"}
+        activeClassName={"text-indigo-700"}
+      />
       </div>
     </Fragment>
   );

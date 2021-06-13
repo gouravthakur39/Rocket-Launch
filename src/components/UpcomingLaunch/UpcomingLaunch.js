@@ -26,7 +26,7 @@ function UpcomingLaunch() {
 
   const [pageNumber, setPageNumber] = useState(0);
 
-  const itemsPerPage = 3;
+  const itemsPerPage = 5;
   const pagesVisited = pageNumber * itemsPerPage;
 
   // const baseURL_UpcomingLaunch =
