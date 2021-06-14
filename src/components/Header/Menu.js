@@ -11,10 +11,10 @@ function Menu() {
   return (
     <Fragment>
       <div className="hidden md:block">
-        <div className="ml-10 flex items-baseline space-x-4">
+        <div className="ml-10 flex items-baseline space-x-4 text-gray-600 dark:text-gray-200">
           <NavLink
             name="homelink"
-            activeClassName="text-indigo-300"
+            activeClassName="font-semibold text-gray-700 dark:text-black"
             onClick={handleItemClick}
             exact
             to="/"
@@ -24,7 +24,7 @@ function Menu() {
 
           <NavLink
             name="upcominglink"
-            activeClassName="text-indigo-300"
+            activeClassName="font-semibold text-gray-700 dark:text-black"
             onClick={handleItemClick}
             exact
             to="/upcoming-launch"
@@ -34,7 +34,7 @@ function Menu() {
 
           <NavLink
             name="newslink"
-            activeClassName="text-indigo-300"
+            activeClassName="font-semibold text-gray-700 dark:text-black"
             onClick={handleItemClick}
             exact
             to="/news"
@@ -44,7 +44,7 @@ function Menu() {
 
           <NavLink
             name="rocketlink"
-            activeClassName="text-indigo-300"
+            activeClassName="font-semibold text-gray-700 dark:text-black"
             onClick={handleItemClick}
             exact
             to="/rockets"
@@ -54,7 +54,7 @@ function Menu() {
 
           <NavLink
             name="dashboardlink"
-            activeClassName="text-indigo-300"
+            activeClassName="font-semibold text-gray-700 dark:text-black"
             onClick={handleItemClick}
             exact
             to="/dashboard"

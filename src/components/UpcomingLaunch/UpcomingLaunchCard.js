@@ -1,16 +1,40 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import ReactDOM from "react-dom";
 import useDarkMode from "../../Hooks/useDarkMode";
+import Countdown from "react-countdown";
+// import Countdown from "../Countdown/Countdown";
 
-import Moment from 'react-moment';
-import 'moment-timezone';
+// function datetimediff(d2) {
+//   let d1 = new Date("2021-06-15T00:00:00Z");
+//   // let d2 = new Date();
+//   var diff = d1 - d2;
+//   console.log(diff);
+
+//   console.log(Math.floor(diff / 3600000 / 24), "days from now");
+//   console.log(Math.floor(diff / 3600000), "hours from now");
+//   console.log(Math.floor(diff / 60000), "minutes from now");
+//   console.log(Math.floor(diff / 1e3), "seconds from now");
+// }
 
 function UpcomingLaunchCard(props) {
+  const renderer = ({ days, hours, minutes, seconds, completed }) => {
+    if (completed) {
+      // Render a completed state
+      return "Launched";
+    } else {
+      // Render a countdown
+      return (
+        <span>
+          T - {days} days :{hours} hours:{minutes} mins:{seconds} secs
+        </span>
+      );
+    }
+  };
   useDarkMode();
   return (
     <Fragment>
-      <div className="p-5 ">
-        <div className=" w-full lg:max-w-full lg:flex ">
+      <div className="p-5  ">
+        <div className=" w-full lg:max-w-full lg:flex  ">
           <div
             className="h-48  lg:h-auto lg:w-64 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center bg-center overflow-hidden "
             style={{
@@ -22,9 +46,10 @@ function UpcomingLaunchCard(props) {
             <div className="mb-8">
               <div className="flex flex-row justify-between text-gray-900 dark:text-red-900 font-bold text-xl mb-2">
                 {props.upcomingLaunchTitle}
-                <p className="flex-none bg-red-500 text-red-200 p-2 rounded-full text-xs">
-                
-                <Moment format="DD">{props.upcomingLaunchDate}</Moment> days from now
+                <p className="flex-none bg-red-500 text-gray-100 p-2 rounded-full text-xs">
+                  {/* FIXME: */}
+                  {/* <Moment format="DD">{props.upcomingLaunchDate}</Moment> days */}
+                  8 days from now
                 </p>
               </div>
               <p className="text-gray-700 text-base leading-relaxed ">
@@ -44,9 +69,11 @@ function UpcomingLaunchCard(props) {
                   {props.upcomingLaunchProvider}
                 </p>
                 <p className="text-indigo-100 bg-indigo-500 px-3 py-1 rounded-xl inline-block align-middle mt-2">
+                  {/* FIXME: */}
                   {props.upcomingLaunchDate}
                 </p>
                 <p className="text-gray-900 leading-relaxed mt-2 ">
+                  {/* FIXME: */}
                   {props.upcomingLaunchTime}
                 </p>
               </div>
@@ -69,9 +96,15 @@ function UpcomingLaunchCard(props) {
                 </p>
               </div>
             </div>
-            <div class="mt-4 flex flex-wrap ml-1">
+            <div class="mt-4 flex flex-wrap justify-between items-center ml-1">
               <span class="m-1 bg-gray-200 hover:bg-gray-300 rounded-full px-2 font-bold text-xs leading-loose cursor-pointer">
                 {props.upcomingLaunchTags}
+              </span>
+              <span>
+                <Countdown
+                  date={props.upcomingLaunchDate}
+                  renderer={renderer}
+                />
               </span>
             </div>
           </div>

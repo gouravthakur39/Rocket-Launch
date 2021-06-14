@@ -73,14 +73,16 @@ function Header() {
                       </g>
                     </g>
                   </svg>
-                  <h1 className="text-2xl text-gray-300 dark:text-gray-300 ml-3">Liftoff</h1>
+                  <h1 className="text-2xl text-gray-800 dark:text-indigo-100 ml-3">Liftoff</h1>
                 </a>
                 <Menu />
               </div>
+              <div className="flex items-center justify-between space-x-3">
               {currentUser && <LoginSignupButton />}
               {!currentUser && <LoginButton />}
               {!currentUser && <SignupButton />}
               <DarkModeToggler />
+              </div>
             </div>
           </div>
         </nav>

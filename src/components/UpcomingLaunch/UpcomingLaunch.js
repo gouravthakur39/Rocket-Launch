@@ -55,8 +55,6 @@ function UpcomingLaunch() {
       });
   }, [baseURL_UpcomingLaunch]);
 
-  
-
   if (loading)
     return (
       <h1 className="h-screen flex justify-center items-center text-xl m-2">
@@ -77,46 +75,46 @@ function UpcomingLaunch() {
       </div>
     );
 
-  
-
-  const launchList = data.slice(pagesVisited, pagesVisited + itemsPerPage).map((item) => (
-    <UpcomingLaunchCard
-      key={item.id}
-      upcomingLaunchTitle={JSON.parse(JSON.stringify(item.name.substring(0, 40)))}
-      upcomingLaunchdescription={JSON.parse(
-        JSON.stringify(
-          item.mission !== null
-            ? item.mission.description.substring(0, 200)
-            : "To be updated"
-        )
-      )}
-      upcomingLaunchProvider={JSON.parse(
-        JSON.stringify(item.launch_service_provider.name)
-      )}
-      upcomingLaunchDate={JSON.parse(
-        JSON.stringify(Date(item.window_start).toString())
-      )}
-      upcomingLaunchPad={JSON.parse(JSON.stringify(item.pad.name))}
-      upcomingLaunchLocation={JSON.parse(
-        JSON.stringify(item.pad.location.name)
-      )}
-      upcomingLaunchCountry={JSON.parse(
-        JSON.stringify(
-          item.pad.location.country_code !== null
-            ? item.pad.location.country_code
-            : "To be updated"
-        )
-      )}
-      upcomingLaunchMission={JSON.parse(JSON.stringify(item.status.abbrev))}
-      upcomingLaunchTags={JSON.parse(
-        JSON.stringify(item.rocket.configuration.name)
-      )}
-      upcomingLaunchImage={JSON.parse(JSON.stringify(item.image))}
-      companyLogo={JSON.parse(
-        JSON.stringify(item.launch_service_provider.logo_url)
-      )}
-    />
-  ));
+  const launchList = data
+    .slice(pagesVisited, pagesVisited + itemsPerPage)
+    .map((item) => (
+      <UpcomingLaunchCard
+        key={item.id}
+        upcomingLaunchTitle={JSON.parse(
+          JSON.stringify(item.name.substring(0, 40))
+        )}
+        upcomingLaunchdescription={JSON.parse(
+          JSON.stringify(
+            item.mission !== null
+              ? item.mission.description.substring(0, 200)
+              : "To be updated"
+          )
+        )}
+        upcomingLaunchProvider={JSON.parse(
+          JSON.stringify(item.launch_service_provider.name)
+        )}
+        upcomingLaunchDate={JSON.parse(JSON.stringify(item.window_start))}
+        upcomingLaunchPad={JSON.parse(JSON.stringify(item.pad.name))}
+        upcomingLaunchLocation={JSON.parse(
+          JSON.stringify(item.pad.location.name)
+        )}
+        upcomingLaunchCountry={JSON.parse(
+          JSON.stringify(
+            item.pad.location.country_code !== null
+              ? item.pad.location.country_code
+              : "To be updated"
+          )
+        )}
+        upcomingLaunchMission={JSON.parse(JSON.stringify(item.status.abbrev))}
+        upcomingLaunchTags={JSON.parse(
+          JSON.stringify(item.rocket.configuration.name)
+        )}
+        upcomingLaunchImage={JSON.parse(JSON.stringify(item.image))}
+        companyLogo={JSON.parse(
+          JSON.stringify(item.launch_service_provider.logo_url)
+        )}
+      />
+    ));
 
   const pageCount = Math.ceil(data.length / itemsPerPage);
 
@@ -134,17 +132,20 @@ function UpcomingLaunch() {
 
         {launchList}
         <ReactPaginate
-        previousLabel={"Prev"}
-        nextLabel={"Next"}
-        pageCount={pageCount}
-        onPageChange={changePage}
-        containerClassName={"flex float-right m-4 px-2 text-xl"}
-        previousLinkClassName={"text-indigo-100 font-bold rounded px-3 py-2 bg-indigo-700 hover:bg-indigo-500"}
-        nextLinkClassName={"text-indigo-100 font-bold rounded px-3 py-2 bg-indigo-700 hover:bg-indigo-500"}
-        pageClassName={"text-gray-700 px-3 hover:text-gray-500"}
-        activeClassName={"text-indigo-700"}
-      />
-      
+          previousLabel={"Prev"}
+          nextLabel={"Next"}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={"flex float-right m-4 px-2 text-xl"}
+          previousLinkClassName={
+            "text-indigo-100 font-bold rounded px-3 py-2 bg-indigo-700 hover:bg-indigo-500"
+          }
+          nextLinkClassName={
+            "text-indigo-100 font-bold rounded px-3 py-2 bg-indigo-700 hover:bg-indigo-500"
+          }
+          pageClassName={"text-gray-700 px-3 hover:text-gray-500"}
+          activeClassName={"text-indigo-700"}
+        />
       </div>
     </Fragment>
   );
