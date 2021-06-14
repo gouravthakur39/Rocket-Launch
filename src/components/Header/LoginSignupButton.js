@@ -14,7 +14,7 @@ function LoginSignupButton() {
       <div className="">
         <div className="ml-4 flex items-center justify-center md:ml-6">
           {/* when logged out this is giving error. fix it */}
-          <h4 className="text-base text-gray-100 mr-2">{currentUser.email}</h4>
+          <h4 className="text-base text-gray-800 dark:text-gray-100 mr-2">{currentUser.email}</h4>
           {currentUser && <LogoutButton />}
           {!currentUser && <LoginButton />}
           {currentUser && (

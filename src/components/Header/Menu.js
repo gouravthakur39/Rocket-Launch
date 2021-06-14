@@ -53,6 +53,16 @@ function Menu() {
           </NavLink>
 
           <NavLink
+            name="eventslink"
+            activeClassName="font-semibold text-gray-700 dark:text-black"
+            onClick={handleItemClick}
+            exact
+            to="/events"
+          >
+            Events
+          </NavLink>
+
+          <NavLink
             name="dashboardlink"
             activeClassName="font-semibold text-gray-700 dark:text-black"
             onClick={handleItemClick}

@@ -12,6 +12,8 @@ import UpcomingLaunch from "./components/UpcomingLaunch/UpcomingLaunch";
 import Rockets from "./components/Rockets/Rockets";
 import UpdateProfile from "./components/UpdateProfile/UpdateProfile";
 import News from "./components/News/News";
+import Events from "./components/Events/Events";
+
 
 
 function App() {
@@ -33,6 +35,8 @@ function App() {
           <Route exact path="/news" component={News} />
 
           <Route exact path="/rockets" component={Rockets} />
+
+          <Route exact path="/events" component={Events} />
 
           <Route exact path="/signup" component={SignUp} />
 

@@ -2,19 +2,6 @@ import React, { Fragment, useEffect } from "react";
 import ReactDOM from "react-dom";
 import useDarkMode from "../../Hooks/useDarkMode";
 import Countdown from "react-countdown";
-// import Countdown from "../Countdown/Countdown";
-
-// function datetimediff(d2) {
-//   let d1 = new Date("2021-06-15T00:00:00Z");
-//   // let d2 = new Date();
-//   var diff = d1 - d2;
-//   console.log(diff);
-
-//   console.log(Math.floor(diff / 3600000 / 24), "days from now");
-//   console.log(Math.floor(diff / 3600000), "hours from now");
-//   console.log(Math.floor(diff / 60000), "minutes from now");
-//   console.log(Math.floor(diff / 1e3), "seconds from now");
-// }
 
 function UpcomingLaunchCard(props) {
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
