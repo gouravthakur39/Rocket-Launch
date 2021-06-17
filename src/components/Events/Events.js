@@ -20,7 +20,7 @@ const memo = (callback) => {
 const memoizedFetchGet = memo(fetch);
 
 function Events(props) {
-  console.log(props);
+  // console.log(props);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -84,6 +84,7 @@ function Events(props) {
     .map((item) => (
       <EventCard
         key={item.id}
+        id={item.id}
         eventTitle={JSON.parse(JSON.stringify(item.name.substring(0, 40)))}
         eventDescription={JSON.parse(
           JSON.stringify(
@@ -113,8 +114,9 @@ function Events(props) {
         </h1>
 
         {/* undefined error  */}
-        <NavLink to={`/events/${event.id}`}> {EventList}</NavLink>
-        {/* {EventList} */}
+        {/* <NavLink to={`/events/${event.id}`}> {EventList}</NavLink> */}
+        {/* <NavLink to={`/events/${props.match.params.eventId}`}> {EventList}</NavLink> */}
+        {EventList}
         <ReactPaginate
           previousLabel={"Prev"}
           nextLabel={"Next"}

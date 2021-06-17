@@ -33,7 +33,7 @@ function App() {
             <Route exact path="/upcoming-launch" component={UpcomingLaunch} />
             <Route exact path="/news" component={News} />
             <Route exact path="/rockets" component={Rockets} />
-            <Route exact path="/events"  component={Events} />
+            <Route exact path="/events" component={Events} />
             <Route exact path="/events/:eventId" component={Event} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/login" component={Login} />

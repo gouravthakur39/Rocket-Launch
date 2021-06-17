@@ -87,7 +87,6 @@ function Event(props) {
         </h1>
 
         {event.name}
-      
       </div>
     </Fragment>
   );

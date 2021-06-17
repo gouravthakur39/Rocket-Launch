@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import ReactDOM from "react-dom";
 import useDarkMode from "../../Hooks/useDarkMode";
+import { Link } from "react-router-dom";
 
 function EventCard(props) {
   // console.log(props)
@@ -19,8 +20,9 @@ function EventCard(props) {
           <div className="w-screen  hover:bg-gray-100  shadow border-r border-b border-l border-gray-300 lg:border-l-0 lg:border-t lg:border-gray-300 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
             <div className="mb-8">
               <div className="flex flex-row justify-between text-gray-900 dark:text-red-900 font-bold text-xl mb-2">
-                {props.eventTitle}
-                {/* {props.eventTitle2} */}
+                <Link className="btn" to={`/events/${props.id}`}>
+                  {props.eventTitle}
+                </Link>
               </div>
               <p className="text-gray-700 text-base leading-relaxed ">
                 {props.eventDescription}
