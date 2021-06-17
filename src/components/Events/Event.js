@@ -1,7 +1,6 @@
-// import { data } from "autoprefixer";
 import React, { Fragment, useState, useEffect } from "react";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import EventCard from "./EventCard";
 import ReactPaginate from "react-paginate";
@@ -19,8 +18,9 @@ const memo = (callback) => {
 
 const memoizedFetchGet = memo(fetch);
 
-function Events(props) {
-  console.log(props);
+function Event(props) {
+  // console.log(props);
+  const eventID = props.match.params.eventId;
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -34,8 +34,6 @@ function Events(props) {
 
   const baseURL_UpcomingLaunch = "http://localhost:3000/events";
 
-  const eventID = props.match.params.eventId;
-
   useEffect(() => {
     memoizedFetchGet(baseURL_UpcomingLaunch)
       .then((response) => {
@@ -46,9 +44,10 @@ function Events(props) {
       })
       .then((data) => {
         setData(data);
+
         const event = data.find((eventId) => eventId.id == eventID);
+        console.log(event);
         setEvent(event);
-        // console.log(event)
       })
       .catch((error) => {
         console.error("Error fetching data: ", error);
@@ -79,60 +78,19 @@ function Events(props) {
       </div>
     );
 
-  const EventList = data
-    .slice(pagesVisited, pagesVisited + itemsPerPage)
-    .map((item) => (
-      <EventCard
-        key={item.id}
-        eventTitle={JSON.parse(JSON.stringify(item.name.substring(0, 40)))}
-        eventDescription={JSON.parse(
-          JSON.stringify(
-            item.mission !== null
-              ? item.description.substring(0, 200)
-              : "To be updated"
-          )
-        )}
-        eventDate={JSON.parse(JSON.stringify(item.date))}
-        eventImage={JSON.parse(JSON.stringify(item.feature_image))}
-        {...props}
-      />
-    ));
-
-  const pageCount = Math.ceil(data.length / itemsPerPage);
-
-  const changePage = ({ selected }) => {
-    setPageNumber(selected);
-  };
-
   return (
     <Fragment>
       <Header />
       <div className="h-screen max-w-4xl flex-col justify-center items-center mx-auto">
         <h1 className="font-semibold flex justify-center mt-10 mb-2 text-3xl">
-          Events
+          Detailed Event
         </h1>
 
-        {/* undefined error  */}
-        <NavLink to={`/events/${event.id}`}> {EventList}</NavLink>
-        {/* {EventList} */}
-        <ReactPaginate
-          previousLabel={"Prev"}
-          nextLabel={"Next"}
-          pageCount={pageCount}
-          onPageChange={changePage}
-          containerClassName={"flex float-right m-4 px-2 text-xl"}
-          previousLinkClassName={
-            "text-indigo-100 font-bold rounded px-3 py-2 bg-indigo-700 hover:bg-indigo-500"
-          }
-          nextLinkClassName={
-            "text-indigo-100 font-bold rounded px-3 py-2 bg-indigo-700 hover:bg-indigo-500"
-          }
-          pageClassName={"text-gray-700 px-3 hover:text-gray-500"}
-          activeClassName={"text-indigo-700"}
-        />
+        {event.name}
+      
       </div>
     </Fragment>
   );
 }
 
-export default Events;
+export default Event;

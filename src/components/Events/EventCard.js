@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import useDarkMode from "../../Hooks/useDarkMode";
 
 function EventCard(props) {
+  // console.log(props)
   useDarkMode();
   return (
     <Fragment>
@@ -19,6 +20,7 @@ function EventCard(props) {
             <div className="mb-8">
               <div className="flex flex-row justify-between text-gray-900 dark:text-red-900 font-bold text-xl mb-2">
                 {props.eventTitle}
+                {/* {props.eventTitle2} */}
               </div>
               <p className="text-gray-700 text-base leading-relaxed ">
                 {props.eventDescription}

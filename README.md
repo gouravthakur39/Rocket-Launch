@@ -4,3 +4,4 @@
 ### 2. npm install
 ### 3. run tailwind build command : npm run build:css
 ### 4. npm start
+### 5. npm run json:server
