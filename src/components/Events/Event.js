@@ -83,10 +83,79 @@ function Event(props) {
       <Header />
       <div className="h-screen max-w-4xl flex-col justify-center items-center mx-auto">
         <h1 className="font-semibold flex justify-center mt-10 mb-2 text-3xl">
-          Detailed Event
+          Event details
         </h1>
+        <div className="m-5 bg-gray-200 p-5 flex flex-col">
+          <div className="m-5 bg-gray-100 p-5 ">
+            <div>
+              <p className="mr-48 font-bold">Name:</p>
+            </div>
+            <div>{event.name}</div>
+          </div>
 
-        {event.name}
+          <div className="m-5 bg-gray-100 p-5 ">
+            <div>
+              <p className="mr-48 font-bold">Type:</p>
+            </div>
+            <div>
+              {event.type.name}
+              <div>{event.launches == null ? event.launches[0].mission.type : 'To be updated'}</div>
+            </div>
+            <div>{event.launches == null ? event.launches[0].launch_service_provider.type: 'To be updated'}</div>
+          </div>
+
+          <div className="m-5 bg-gray-100 p-5 ">
+            <div>
+              <p className="mr-48  font-bold">Description:</p>
+            </div>
+            <div>{event.description}</div>
+            <br />
+            <div>{event.launches == null ? event.launches[0].mission.description: 'To be updated'}</div>
+          </div>
+
+          <div className="m-5 bg-gray-100 p-5 ">
+            <div>
+              <p className="mr-48 font-bold">Location:</p>
+            </div>
+            <div>{event.location}</div>
+          </div>
+
+          <div className="m-5 bg-gray-100 p-5 ">
+            <div>
+              <p className="mr-48 font-bold">Date:</p>
+            </div>
+            <div>{event.date}</div>
+          </div>
+
+          <div className="m-5 bg-gray-100 p-5 ">
+            <div>
+              <p className="mr-48 font-bold">Rocket:</p>
+            </div>
+            <div>{event.launches == null ? event.launches[0].name : 'To be updated'}</div>
+          </div>
+
+          <div className="m-5 bg-gray-100 p-5 ">
+            <div>
+              <p className="mr-48 font-bold">Status:</p>
+            </div>
+            <div>{event.launches == null ? event.launches[0].status.name: 'To be updated'}</div>
+            <div>{event.launches == null ? event.launches[0].status.description : 'To be updated'}</div>
+          </div>
+
+          <div className="m-5 bg-gray-100 p-5 ">
+            <div>
+              <p className="mr-48 font-bold">Launch service provider:</p>
+            </div>
+            <div>{event.launches == null ? event.launches[0].launch_service_provider.name: 'To be updated'}</div>
+          </div>
+
+          <div className="m-5 bg-gray-100 p-5 ">
+            <div>
+              <p className="mr-48 font-bold">Orbit:</p>
+            </div>
+            <div>{event.launches == null ? event.launches[0].mission.orbit.name: 'To be updated'}</div>
+          </div>
+        </div>
       </div>
     </Fragment>
   );
